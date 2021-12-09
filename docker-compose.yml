@@ -22,7 +22,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
+<<<<<<< HEAD
 networks:
   default:
     external:
       name: hostnet
+=======
+volumes:
+  traefik-certificates:
+>>>>>>> d648e472e5e4f5acae3ccb30fcccfcbbcb392eff
