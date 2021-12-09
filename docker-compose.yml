@@ -35,7 +35,3 @@ services:
 
 volumes:
   traefik-certificates:
-networks:
-  default:
-    external:
-      name: hostnet
