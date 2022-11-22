@@ -1,4 +1,4 @@
-# traefik-proxy-dev
+# docker-traefik-proxy
 Traefik proxy for docker
 
 Boilerplate traefik docker-compose with docker provider, label configuration, and automatic SSL generation.
