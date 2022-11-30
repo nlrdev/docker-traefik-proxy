@@ -9,7 +9,6 @@ services:
       - --log.level=DEBUG
       - --providers.docker=true
       - --providers.docker.exposedbydefault=false
-      - --api.dashboard=true
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
       - --certificatesresolvers.sslresolver.acme.email=email@address.com
@@ -17,21 +16,12 @@ services:
       - --certificatesresolvers.sslresolver.acme.httpchallenge.entrypoint=web
       - --entrypoints.web.http.redirections.entryPoint.to=websecure
       - --entrypoints.web.http.redirections.entryPoint.scheme=https
-      - --api.dashboard=true
     ports:
       - 80:80
       - 443:443
     volumes:
       - traefik-certificates:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`url.for.dashboard`)"
-      - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.routers.traefik.tls.certresolver=sslresolver"
-      - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.middlewares=traefik-auth"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=user:pass"
 
 volumes:
   traefik-certificates:
